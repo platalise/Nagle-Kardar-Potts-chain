@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: >-
+  nkpotts: exact general-q transition line, spinodals, and order-parameter jump
+  in the Nagle-Kardar-Potts chain
+message: >-
+  If you use this software or reproduce its results, please cite the accompanying
+  paper below.
+type: software
+authors:
+  - given-names: Author
+    family-names: Name
+    email: author@university.edu.vn
+    affiliation: Department of Physics, University, Ho Chi Minh City, Vietnam
+version: 0.1.0
+date-released: "2026-07-10"
+license: MIT
+repository-code: "https://github.com/OWNER/nkpotts"
+url: "https://github.com/OWNER/nkpotts"
+keywords:
+  - statistical physics
+  - phase transitions
+  - Potts model
+  - long-range interactions
+  - Monte Carlo
+  - Bayes-optimal inference
+  - Cramer-Rao bound
+preferred-citation:
+  type: article
+  title: >-
+    The Nagle–Kardar–Potts chain for general q: exact transition line, spinodals, and order-parameter jump
+  authors:
+    - given-names: Author
+      family-names: Name
+  year: 2026
+  journal: "arXiv (submitted to SciPost Physics Core)"
+  url: "https://arxiv.org/abs/XXXX.XXXXX"

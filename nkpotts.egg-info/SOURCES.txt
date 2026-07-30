@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+nkpotts/__init__.py
+nkpotts/gnn_corrected.py
+nkpotts/info_bound.py
+nkpotts/mc_corrected.py
+nkpotts/powerlaw_mc.py
+nkpotts/powerlaw_theory.py
+nkpotts/theory_exact.py
+nkpotts/verify_bug.py
+nkpotts.egg-info/PKG-INFO
+nkpotts.egg-info/SOURCES.txt
+nkpotts.egg-info/dependency_links.txt
+nkpotts.egg-info/requires.txt
+nkpotts.egg-info/top_level.txt
+tests/test_theory.py
