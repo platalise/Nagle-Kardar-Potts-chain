@@ -1,0 +1,73 @@
+{
+  "J": 1.0,
+  "T": 1.0,
+  "q": 3,
+  "h_t_meanfield_alpha_le_1": 1.2530467500728915,
+  "h_t_at_J0_check_4ln2": 2.772588722239781,
+  "kac_and_regimes": {
+    "alpha=0.2": {
+      "N_alpha(L=256)": 119.78938479184018,
+      "N_alpha(L=1024)": 366.1156130529993,
+      "N_alpha(L=4096)": 1112.836875626967,
+      "asymptotic(L=4096)": 1114.3047210190393,
+      "regime": "strong-LR (mean-field exact, first order)",
+      "sigma=alpha-1": -0.8
+    },
+    "alpha=0.5": {
+      "N_alpha(L=256)": 42.33406743404221,
+      "N_alpha(L=1024)": 87.58895178119849,
+      "N_alpha(L=4096)": 178.09862606700423,
+      "asymptotic(L=4096)": 181.01933598375618,
+      "regime": "strong-LR (mean-field exact, first order)",
+      "sigma=alpha-1": -0.5
+    },
+    "alpha=0.8": {
+      "N_alpha(L=256)": 17.515059907411153,
+      "N_alpha(L=1024)": 25.946943928914774,
+      "N_alpha(L=4096)": 37.072857222025746,
+      "asymptotic(L=4096)": 45.947934199881395,
+      "regime": "strong-LR (mean-field exact, first order)",
+      "sigma=alpha-1": -0.19999999999999996
+    },
+    "alpha=1.0": {
+      "N_alpha(L=256)": 10.858481685178345,
+      "N_alpha(L=1024)": 13.631079944099447,
+      "N_alpha(L=4096)": 16.403669262385435,
+      "asymptotic(L=4096)": 15.249237972318797,
+      "regime": "strong-LR (mean-field exact, first order)",
+      "sigma=alpha-1": 0.0
+    },
+    "alpha=1.2": {
+      "N_alpha(L=256)": 7.393868840512758,
+      "N_alpha(L=1024)": 8.311418775766189,
+      "N_alpha(L=4096)": 9.00678846373742,
+      "asymptotic(L=4096)": 10.31261388378366,
+      "regime": "weak-LR, mean-field exponents",
+      "sigma=alpha-1": 0.19999999999999996
+    },
+    "alpha=1.5": {
+      "N_alpha(L=256)": 4.871195958090555,
+      "N_alpha(L=1024)": 5.047973959927514,
+      "N_alpha(L=4096)": 5.136362348405569,
+      "asymptotic(L=4096)": 5.215806414280624,
+      "regime": "long-range critical (nontrivial); possible tricritical alpha*",
+      "sigma=alpha-1": 0.5
+    },
+    "alpha=1.8": {
+      "N_alpha(L=256)": 3.712915580930922,
+      "N_alpha(L=1024)": 3.747456287732943,
+      "N_alpha(L=4096)": 3.7588503573586634,
+      "asymptotic(L=4096)": 3.7643156486240943,
+      "regime": "long-range critical (nontrivial); possible tricritical alpha*",
+      "sigma=alpha-1": 0.8
+    },
+    "alpha=2.5": {
+      "N_alpha(L=256)": 2.682053784986259,
+      "N_alpha(L=1024)": 2.682859425370304,
+      "N_alpha(L=4096)": 2.682960128376471,
+      "asymptotic(L=4096)": 2.6829744995946583,
+      "regime": "effectively short-range (transition pushed up / crossover)",
+      "sigma=alpha-1": 1.5
+    }
+  }
+}

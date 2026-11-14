@@ -77,7 +77,20 @@ chi = np.array([r["chi"] for r in rows])
 print("chi-peak at h =", h_axis[chi.argmax()], "(exact h_t = 1.253)")
 ```
 
-## Reproduce the paper
+## Reproduce the revised paper (November 2026)
+
+```bash
+python scripts/verify_master_form.py --json data/master_form_checks.json  # Secs. 2.3-2.5 + SI tables (~1 min)
+python scripts/run_production_mc.py --mode hyst --Ls 3200 6400            # Fig. 6 data (writes to cwd)
+python scripts/run_reweighting.py run --nproc 8                           # long runs at h_t (~15 min, 8 cores)
+python scripts/run_reweighting.py analyze                                 # reweighting -> data/*.csv
+python scripts/make_paper_figures.py --outdir figures                     # all figures of the revised paper + SI Fig. S1
+python scripts/verify_data_vs_claims.py                                   # every MC number in the text
+```
+
+See `data/README_DATA.md` for the provenance of every data file.
+
+## Reproduce the paper (submitted version)
 
 Every figure is reproducible from data files via a single script:
 
