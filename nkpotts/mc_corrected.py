@@ -95,6 +95,42 @@ def run_one(L, h, q, J, beta, burn, nmeas, freq, seed):
     return m, e
 
 
+@njit(cache=True)
+def run_record(L, h, q, J, beta, burn, nmeas, freq, seed):
+    """Long fixed-h run that records, every `freq` sweeps, the three integers
+    needed for exact single-histogram reweighting in h:
+        nmax = max_a n_a            (-> phi)
+        S    = sum_a n_a (n_a - 1)  (-> herding energy, E_glob = -h S / 2L)
+        nb   = #{i : s_i = s_{i+1}} (-> local energy,   E_loc  = -J nb)
+    """
+    np.random.seed(seed)
+    spins = np.random.randint(0, q, L)
+    counts = np.zeros(q, dtype=np.int64)
+    for s in spins:
+        counts[s] += 1
+    _sweep(spins, counts, L, h, q, J, beta, burn)
+    n = nmeas // freq
+    nmax = np.zeros(n, dtype=np.int32)
+    S = np.zeros(n, dtype=np.int64)
+    nb = np.zeros(n, dtype=np.int32)
+    for k in range(n):
+        _sweep(spins, counts, L, h, q, J, beta, freq)
+        mx = 0
+        ss = 0
+        for a in range(q):
+            if counts[a] > mx:
+                mx = counts[a]
+            ss += counts[a] * (counts[a] - 1)
+        b = 0
+        for i in range(L):
+            if spins[i] == spins[(i + 1) % L]:
+                b += 1
+        nmax[k] = mx
+        S[k] = ss
+        nb[k] = b
+    return nmax, S, nb
+
+
 def jackknife(m, e, L, beta):
     N = len(m)
     sm, sm2 = m.sum(), (m**2).sum()
@@ -128,10 +164,19 @@ def measure_grid(L, h_axis, burn, nmeas, freq, seed0=12345):
     return rows
 
 
+@njit(cache=True)
+def _seed_numba(seed):
+    # Numba keeps its own RNG state, separate from NumPy's: np.random.seed()
+    # called from plain Python does NOT seed the generator used inside the
+    # jitted sweep.  Seeding must happen inside a jitted function.
+    np.random.seed(seed)
+
+
 def hysteresis(L, h_lo, h_hi, nh, sweeps_per_step, seed=7):
     """Up then down sweep of h, short equilibration each step -> hysteresis loop."""
     beta = 1.0/T
-    np.random.seed(seed)
+    np.random.seed(seed)      # initial configuration (NumPy RNG)
+    _seed_numba(seed)         # Metropolis moves (Numba RNG) -> reproducible
     hs_up = np.linspace(h_lo, h_hi, nh)
     hs_dn = hs_up[::-1]
     spins = np.random.randint(0, Q, L)
